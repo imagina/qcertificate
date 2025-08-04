@@ -4,7 +4,7 @@ const pages = config('pages') // Get Pages from config
 export default [
     {
       title: 'icertificate.cms.sidebar.adminGroup',
-      icon: 'fa-light fa-list-check',
+      icon: 'fa-light fa-file-certificate',
       children: [
         pages.qcertificate.customers,        
       ]

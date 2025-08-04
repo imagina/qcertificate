@@ -13,209 +13,93 @@ export default {
     crudData() {
       return {
         crudId: this.crudId,
-        entityName: config("main.qblog.entityNames.category"),
-        apiRoute: 'apiRoutes.qblog.categories',
-        permission: 'iblog.categories',
-        extraFormFields: 'iblog.crud-fields.categories',
+        entityName: config("main.qcertificate.entityNames.customers"),
+        apiRoute: 'apiRoutes.qcertificate.customers',
+        permission: 'icertificate.customers',        
         create: {
-          title: this.$tr('iblog.cms.newCategory'),
+          title: this.$tr('icertificate.cms.newCustomer'),
         },
         read: {
           columns: [
             {name: 'id', label: this.$tr('isite.cms.form.id'), field: 'id', style: 'width: 50px'},
-            {name: 'name', label: this.$tr('isite.cms.form.title'), field: 'title', align: 'rigth'},
-            {name: 'slug', label: this.$tr('isite.cms.form.slug'), field: 'slug', align: 'left'},
-            {
-              name: 'status',
-              label: this.$tr('isite.cms.form.status'),
-              field: 'status',
-              align: 'left',
-              isTranslatable: true
-            },
-            {
-              name: 'parent', label: this.$tr('isite.cms.form.parent'), field: 'parent', align: 'left',
-              format: val => val ? (val.title ? val.title : '-') : '-'
-            },
+            {name: 'name', label: this.$tr('isite.cms.form.name'), field: 'name', align: 'rigth'},
+            {name: 'email', label: this.$tr('isite.cms.form.email'), field: 'email', align: 'rigth'},
+            {name: 'idDocument', label: this.$tr('icertificate.cms.form.idDocument'), field: 'idDocument', align: 'center'},
+            {name: 'address', label: this.$tr('isite.cms.form.address'), field: 'address', align: 'left'},                        
+            {name: 'phone', label: this.$tr('isite.cms.form.phone'), field: 'phone', align: 'left'},
+            
             {
               name: 'created_at', label: this.$tr('isite.cms.form.createdAt'), field: 'createdAt', align: 'left',
               format: val => val ? this.$trd(val) : '-',
             },
             {name: 'actions', label: this.$tr('isite.cms.form.actions'), align: 'left'},
-          ],
-          requestParams: {include: 'parent'},
-          filters: {
-            parentId: {
-              value: null,
-              type: 'treeSelect',
-              props: {
-                label: this.$tr('isite.cms.form.parent')
-              },
-              loadOptions: {
-                apiRoute: 'apiRoutes.qblog.categories',
-                requestParams: {filter: {status: 1}}
-              }
-            },
-          }
+          ],          
+          
         },
         update: {
-          title: this.$tr('iblog.cms.updateCategory'),
-          requestParams: {include: 'parent'}
+          title: this.$tr('iblog.cms.updateCategory'),          
         },
         delete: true,
         formLeft: {
           id: {value: ''},
           userId: {value: this.$store.state.quserAuth.userId},
-          title: {
+          name: {
             value: '',
-            type: 'input',
-            isTranslatable: true,
+            type: 'input',           
             props: {
-              label: `${this.$tr('isite.cms.form.title')}*`,
+              label: `${this.$tr('isite.cms.form.name')}*`,
               rules: [
                 val => !!val || this.$tr('isite.cms.message.fieldRequired')
               ],
             },
           },
-          slug: {
-            value: '',
+          email: {
+						value: null,
+						type: 'input',
+						props : {
+							label: `${this.$tr('isite.cms.form.email')}*`,
+							rules: [
+								val => !!val || this.$tr('isite.cms.message.fieldRequired'),
+								val => this.$helper.validateEmail(val) || this.$tr('isite.cms.message.fieldEmail')
+							],
+						}
+					},
+					idDocument: {
+						value: null,
+						type: 'input',
+						props : {
+							label: `${this.$tr('icertificate.cms.form.idDocument')}*`,							
+							rules: [
+								val => !!val || this.$tr('isite.cms.message.fieldRequired'),
+								//val => !val || val.length == 10 || this.$tr('isite.cms.message.fieldMinLeng',{num : 10})
+							],
+						}
+					},
+          phone: {
+						value: null,
+						type: 'input',
+						props : {
+							label: `${this.$tr('isite.cms.form.phone')}*`,
+							mask:'phone',
+							unmaskedValue : true,
+							rules: [
+								val => !!val || this.$tr('isite.cms.message.fieldRequired'),
+								val => !val || val.length == 10 || this.$tr('isite.cms.message.fieldMinLeng',{num : 10})
+							],
+						}
+					},
+          address: {
+            value: null,
             type: 'input',
-            isTranslatable: true,
             props: {
-              label: `${this.$tr('isite.cms.form.slug')}*`,
+              label: `${this.$tr('isite.cms.form.address')}*`,
               rules: [
                 val => !!val || this.$tr('isite.cms.message.fieldRequired')
               ],
             }
-          },
-          description: {
-            value: '',
-            type: 'html',
-            isTranslatable: true,
-            props: {
-              label: `${this.$tr('isite.cms.form.description')}*`,
-              rules: [
-                val => !!val || this.$tr('isite.cms.message.fieldRequired')
-              ],
-            }
-          },
-          metaTitle: {
-            value: '',
-            isTranslatable: true,
-            type: 'input',
-            props: {
-              label: this.$tr('isite.cms.form.metaTitle'),
-            }
-          },
-          metaDescription: {
-            value: '',
-            type: 'input',
-            isTranslatable: true,
-            props: {
-              label: this.$tr('isite.cms.form.metaDescription'),
-              type: 'textarea',
-              rows: 3
-            }
-          },
+          },          
         },
-        formRight: {
-          status: {
-            value: 1,
-            type: 'treeSelect',
-            isTranslatable: true,
-            props: {
-              label: `${this.$tr('isite.cms.form.status')}`,
-              clearable : false,
-              options: [
-                {label: this.$tr('isite.cms.label.enabled'), id: 1},
-                {label: this.$tr('isite.cms.label.disabled'), id: 0}
-              ]
-            }
-          },
-          masterRecord: {
-            value: 0,
-            isFakeField: true,
-            type: 'select',
-            props: {
-              label: this.$tr('isite.cms.form.masterRecord'),
-              options: [
-                {label: this.$tr('isite.cms.label.yes'), value: 1},
-                {label: this.$tr('isite.cms.label.no'), value: 0},
-              ]
-            }
-          },
-          parentId: {
-            value: 0,
-            type: 'treeSelect',
-            props: {
-              label: this.$tr('isite.cms.form.parent'),
-              options: [
-                {label: this.$tr('isite.cms.label.disabled'), value: 0},
-              ],
-            },
-            loadOptions: {
-              apiRoute: 'apiRoutes.qblog.categories',
-              select: {label: 'title', id: 'id'},
-              requestParams: {include: 'parent', filter: {status: 1}}
-            }
-          },
-          showMenu: {
-            value: false,
-            type: 'checkbox',
-            props: {
-              label: this.$tr('iblog.cms.form.showInMenu'),
-              trueValue: '1',
-              falseValue: '0',
-            }
-          },
-          featured: {
-            value: '0',
-            type: 'checkbox',
-            props: {
-              label: this.$tr('iblog.cms.form.featured'),
-              trueValue: '1',
-              falseValue: '0',
-            }
-          },
-          internal: {
-            value: '0',
-            type: 'checkbox',
-            props: {
-              label: this.$tr('isite.cms.label.internal'),
-              trueValue: '1',
-              falseValue: '0',
-            }
-          },
-          sortOrder: {
-            value: '0',
-            type: 'input',
-            props: {
-              label: this.$tr('iblog.cms.form.sortOrder'),
-              type: 'number'
-            }
-          },
-          mediasSingle: {
-            name: 'mediasSingle',
-            value: {},
-            type: 'media',
-            props: {
-              label: this.$tr('isite.cms.form.firstImage'),
-              zone: 'mainimage',
-              entity: "Modules\\Iblog\\Entities\\Category",
-              entityId: null
-            }
-          },
-          mediasSingle2: {
-            name: 'mediasSingle',
-            value: {},
-            type: 'media',
-            props: {
-              label: this.$tr('isite.cms.form.secondaryImage'),
-              zone: 'secondaryimage',
-              entity: "Modules\\Iblog\\Entities\\Category",
-              entityId: null
-            }
-          }
-        },
+        formRight: {},
       }
     },
     //Crud info

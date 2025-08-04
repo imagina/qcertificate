@@ -1,15 +1,8 @@
+import layout from '@imagina/qcertificate/_i18n/en-us/layout'
+import sidebar from '@imagina/qcertificate/_i18n/en-us/sidebar'
+
 export default {
-  "icertificate": {
-    "cms": {
-      "sidebar": {
-        "adminGroup": "Tasks",
-        "adminCategories": "Categories",
-        "adminPriorities": "Priorities",
-        "adminStatuses": "Statuses",
-        "adminTasks": "Tasks"        
-      },
-      "label": {},
-      "form": {},
-    }
-  }
+  layout,
+  sidebar
 }
+  
