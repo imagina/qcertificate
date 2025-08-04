@@ -6,7 +6,8 @@ export default [
       title: 'icertificate.cms.sidebar.adminGroup',
       icon: 'fa-light fa-file-certificate',
       children: [
-        pages.qcertificate.customers,        
+        pages.qcertificate.customers,
+        pages.qcertificate.companies,
       ]
     },
   ]
