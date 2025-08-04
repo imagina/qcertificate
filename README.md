@@ -1,8 +1,8 @@
-## QACCOUNTING | 2.0.5
+## QCERTIFICATE | 2.0.5
 
 ## Installation
 
-`` npm i @imagina/qaccounting@22.1.19 ``
+`` npm i @imagina/qcertificate@22.1.19 ``
 
 ## API Routes
 
