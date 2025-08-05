@@ -3,6 +3,9 @@
 //Component
 import crud from '@imagina/qcrud/_components/crud'
 
+const nitRegex = /^\d{5,10}-\d{1}$/;
+
+
 export default {
   data() {
     return {
@@ -81,9 +84,10 @@ export default {
 							label: `${this.$tr('icertificate.cms.form.nit')}*`,
 							//mask:'phone',
 							//unmaskedValue : true,
+              mask: "##########-#",
 							rules: [
 								val => !!val || this.$tr('isite.cms.message.fieldRequired'),
-								//val => !val || val.length == 10 || this.$tr('isite.cms.message.fieldMinLeng',{num : 10})
+                val => nitRegex.test(val) || this.$tr('icertificate.cms.message.invalidNIT')
 							],
 						}
 					},    

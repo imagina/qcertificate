@@ -29,5 +29,50 @@ export default {
     subHeader: {
       refresh: true,
     }
+  },
+  trainingTypes: {
+    //permission: 'icertificate.trainingTypes.manage',
+    activated: true,
+    authenticated: true,
+    path: '/certificate/trainingTypes/index',
+    name: 'qcertificate.admin.trainingTypes',
+    crud : import('@imagina/qcertificate/_crud/trainingTypes'),
+    page: () => import('@imagina/qcrud/_pages/admin/crudPage'),
+    layout: () => import('@imagina/qsite/_layouts/master.vue'),
+    title: 'icertificate.cms.sidebar.adminTrainingTypes',
+    icon: 'fa-light fa-bars',
+    subHeader: {
+      refresh: true,
+    }
+  },
+  trainers: {
+    //permission: 'icertificate.trainingTypes.manage',
+    activated: true,
+    authenticated: true,
+    path: '/certificate/trainers/index',
+    name: 'qcertificate.admin.trainers',
+    crud : import('@imagina/qcertificate/_crud/trainers'),
+    page: () => import('@imagina/qcrud/_pages/admin/crudPage'),
+    layout: () => import('@imagina/qsite/_layouts/master.vue'),
+    title: 'icertificate.cms.sidebar.adminTrainers',
+    icon: 'fa-light fa-person-chalkboard',
+    subHeader: {
+      refresh: true,
+    }
+  },  
+  courses: {
+    //permission: 'icertificate.trainingTypes.manage',
+    activated: true,
+    authenticated: true,
+    path: '/certificate/courses/index',
+    name: 'qcertificate.admin.courses',
+    crud : import('@imagina/qcertificate/_crud/courses'),
+    page: () => import('@imagina/qcrud/_pages/admin/crudPage'),
+    layout: () => import('@imagina/qsite/_layouts/master.vue'),
+    title: 'icertificate.cms.sidebar.adminCourses',
+    icon: 'fa-light fa-diagram-subtask',
+    subHeader: {
+      refresh: true,
+    }
   },  
 }

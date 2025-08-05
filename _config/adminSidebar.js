@@ -8,6 +8,9 @@ export default [
       children: [
         pages.qcertificate.customers,
         pages.qcertificate.companies,
+        pages.qcertificate.trainingTypes,
+        pages.qcertificate.trainers,
+        pages.qcertificate.courses,
       ]
     },
   ]
