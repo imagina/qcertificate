@@ -91,33 +91,27 @@ export default {
 							],
 						}
 					},
-
-					
-					
-
-
         },
         formRight: {
-
 					trainerId: {
-							value: null,
-							type: 'crud',
-							props: {
-								crudType: 'select',
-								crudData: import('@imagina/qcertificate/_crud/trainers'),
-								crudProps: {
-										label: `${this.$tr('icertificate.cms.sidebar.adminTrainers')}*`,
-										rules: [
-										val => !!val || this.$tr('isite.cms.message.fieldRequired')
-										],
-								},
-								config: {
-										options: {label: 'fullName', value: 'id'},
-										requestParams: {
-											filter: {status: 1}
-										}
-								},
-							},
+            value: null,
+            type: 'crud',
+            props: {
+              crudType: 'select',
+              crudData: import('@imagina/qcertificate/_crud/trainers'),
+              crudProps: {
+                  label: `${this.$tr('icertificate.cms.sidebar.adminTrainers')}*`,
+                  rules: [
+                  val => !!val || this.$tr('isite.cms.message.fieldRequired')
+                  ],
+              },
+              config: {
+                  options: {label: 'fullName', value: 'id'},
+                  requestParams: {
+                    filter: {status: 1}
+                  }
+              },
+            },
 					},
 
 					trainingTypeId: {
@@ -142,17 +136,17 @@ export default {
 					},
 
 					status: {
-              value: null,
-              type: 'select',
-              props: {
-                label: `${this.$tr('isite.cms.form.status')}:`,
-                clearable: true,
-                options: [
-                  {label: this.$tr('isite.cms.label.enabled'), value: 1},
-                  {label: this.$tr('isite.cms.label.disabled'), value: 0}
-                ],
-              },
+            value: null,
+            type: 'select',
+            props: {
+              label: `${this.$tr('isite.cms.form.status')}:`,
+              clearable: true,
+              options: [
+                {label: this.$tr('isite.cms.label.enabled'), value: 1},
+                {label: this.$tr('isite.cms.label.disabled'), value: 0}
+              ],
             },
+          },
 
 
 

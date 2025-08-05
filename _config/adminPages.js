@@ -31,7 +31,7 @@ export default {
     }
   },
   trainingTypes: {
-    //permission: 'icertificate.trainingTypes.manage',
+    permission: 'icertificate.trainingTypes.manage',
     activated: true,
     authenticated: true,
     path: '/certificate/trainingTypes/index',
@@ -46,7 +46,7 @@ export default {
     }
   },
   trainers: {
-    //permission: 'icertificate.trainingTypes.manage',
+    permission: 'icertificate.trainers.manage',
     activated: true,
     authenticated: true,
     path: '/certificate/trainers/index',
@@ -61,7 +61,7 @@ export default {
     }
   },  
   courses: {
-    //permission: 'icertificate.trainingTypes.manage',
+    permission: 'icertificate.courses.manage',
     activated: true,
     authenticated: true,
     path: '/certificate/courses/index',
@@ -75,4 +75,19 @@ export default {
       refresh: true,
     }
   },  
+  certificates: {
+    permission: 'icertificate.certificates.manage',
+    activated: true,
+    authenticated: true,
+    path: '/certificate/cerfificates/index',
+    name: 'qcertificate.admin.certificates',
+    crud : import('@imagina/qcertificate/_crud/certificates'),
+    page: () => import('@imagina/qcrud/_pages/admin/crudPage'),
+    layout: () => import('@imagina/qsite/_layouts/master.vue'),
+    title: 'icertificate.cms.sidebar.adminCertificates',
+    icon: 'fa-light fa-certificate',
+    subHeader: {
+      refresh: true,
+    }
+  }
 }

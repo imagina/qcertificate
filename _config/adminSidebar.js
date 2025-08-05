@@ -11,6 +11,7 @@ export default [
         pages.qcertificate.trainingTypes,
         pages.qcertificate.trainers,
         pages.qcertificate.courses,
+        pages.qcertificate.certificates,
       ]
     },
   ]
