@@ -31,7 +31,7 @@ export default {
     }
   },
   trainingTypes: {
-    permission: 'icertificate.trainingTypes.manage',
+    permission: 'icertificate.trainingtypes.manage',
     activated: true,
     authenticated: true,
     path: '/certificate/trainingTypes/index',

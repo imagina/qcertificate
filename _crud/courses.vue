@@ -51,7 +51,7 @@ export default {
 
         },
         update: {
-          title: this.$tr('icertificate.cms.updateTrainer'),
+          title: this.$tr('icertificate.cms.updateCourse'),
 					requestParams: {include: 'trainer,trainingType'},
         },
         delete: true,

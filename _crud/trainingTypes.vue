@@ -18,7 +18,7 @@ export default {
         crudId: this.crudId,
         entityName: config("main.qcertificate.entityNames.trainingTypes"),
         apiRoute: 'apiRoutes.qcertificate.trainingTypes',
-        ///permission: 'icertificate.trainingTypes',        
+        permission: 'icertificate.trainingtypes',
         create: {
           title: this.$tr('icertificate.cms.newTrainingtype'),
         },

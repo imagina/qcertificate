@@ -61,8 +61,8 @@ export default {
 
         },
         update: {
-          title: this.$tr('icertificate.cms.updateTrainer'),
-					requestParams: {include: 'customer,company,course'},
+          title: this.$tr('icertificate.cms.updateCertificate'),
+		  requestParams: {include: 'customer,company,course'},
         },
         delete: true,
         formLeft: {
