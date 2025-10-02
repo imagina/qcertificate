@@ -74,6 +74,7 @@ export default {
 						type: 'input',
 						props : {
 							label: `${this.$tr('icertificate.cms.form.standardDuration')}*`,
+              type: 'number',
 							rules: [
 								val => !!val || this.$tr('isite.cms.message.fieldRequired')
 							],
